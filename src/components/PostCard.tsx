@@ -50,7 +50,7 @@ export default function PostCard({ post }: PostCardProps) {
           className="shrink-0"
         >
           <img
-            src={"/avatar.png"}
+            src={post.user.avatar_url || "/avatar.png"}
             alt={post.user.full_name}
             className="w-12 h-12 rounded-full ring-2 ring-gray-200"
           />
@@ -87,7 +87,7 @@ export default function PostCard({ post }: PostCardProps) {
               <div key={comment.id} className="flex items-start gap-3">
                 <Link to={`/profile/${comment.user_id}`} className="shrink-0">
                   <img
-                    src={"/avatar.png"}
+                    src={comment.user.avatar_url || "/avatar.png"}
                     alt={comment.user.full_name}
                     className="w-8 h-8 rounded-full ring-2 ring-gray-200"
                   />

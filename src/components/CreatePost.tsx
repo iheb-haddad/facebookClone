@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 
-export default function CreatePost() {
+export default function CreatePost({ setNewPostAdded }: { setNewPostAdded: (n: number) => void }) {
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,6 +19,7 @@ export default function CreatePost() {
         user_id: user?.id
       });
       setContent('');
+      setNewPostAdded(Math.random());
     } catch (error) {
       console.error('Error creating post:', error);
     } finally {

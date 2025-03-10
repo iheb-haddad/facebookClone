@@ -47,7 +47,7 @@ export default function Profile() {
       <div className="card p-8 mb-8">
         <div className="flex items-center gap-6">
           <img
-            src={"/avatar.png"}
+            src={user.avatar_url || "/avatar.png"}
             alt={user.full_name}
             className="w-32 h-32 rounded-full ring-4 ring-gray-200"
           />

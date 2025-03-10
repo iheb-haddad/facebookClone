@@ -6,10 +6,11 @@ import PostCard from '../components/PostCard';
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [newPostAdded, setNewPostAdded] = useState<number>(0);
 
   useEffect(() => {
     loadPosts();
-  }, []);
+  }, [newPostAdded]);
 
   const loadPosts = async () => {
     const { data } = await supabase
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6">
       <h1 className="text-3xl font-bold text-gray-900 mb-8">Home Feed</h1>
-      <CreatePost />
+      <CreatePost setNewPostAdded={setNewPostAdded}/>
       <div className="space-y-6">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
